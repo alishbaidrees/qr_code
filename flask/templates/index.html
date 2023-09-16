@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" type="image/x-icon" href="logo.png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set a background color for the entire page */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #202020;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the page title */
+h1 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Style the form container */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #333;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Style the form label */
+label {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style the input field */
+input[type="text"] {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Style the submit button */
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Style the QR code image */
+#qr {
+    margin-top: 20px;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style the download link */
+a {
+    display: block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+</style>
+
+</head>
+<body >
+    <h1 style="margin-top: 20px;">QR Code Generator</h1>
+    <form method="POST" action="/" enctype="multipart/form-data" >
+        <label for="link">Enter a link:</label>
+        <input type="text" id="link" name="link" required>
+        <br>
+        <button type="submit" style="color:black">Generate QR Code</button>
+        <br>
+    </form>
+    {% if img_path %}
+    <h2 style="color: #ccc;">QR Code:</h2>
+    <img src="{{ url_for('uploaded_file', filename='qr_code.png') }}" id="qr" alt="QR Code" width="200px" height="200px">
+    <br>
+    <a href="{{ url_for('uploaded_file', filename='qr_code.png') }}" download="qr_code.png">Download</a>
+
+    {% endif %}
+
+   
+    
+
+    
+</body>
+</html>

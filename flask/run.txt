@@ -1,0 +1,2 @@
+right click to myenv folder and open integrated terminal it activates environment then go to main app file right click and open
+integrated terminal and write command python filename.py
